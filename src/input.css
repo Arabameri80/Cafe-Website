@@ -1,0 +1,129 @@
+@font-face {
+  font-family: "Dana";
+
+  src:
+    url("/Font/woff/dana/DanaFaNum-Regular.woff") format("woff"),
+    url("../Font/woff2/dana/DanaFaNum-Regular.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana Medium";
+
+  src:
+    url("../Font/woff/dana/DanaFaNum-Medium.woff") format("woff"),
+    url("../Font/woff2/dana/DanaFaNum-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Dana DemiBold";
+
+  src:
+    url("../Font/woff/dana/DanaFaNum-DemiBold.woff") format("woff"),
+    url("../Font/woff2/dana/DanaFaNum-DemiBold.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Morabba Light";
+
+  src:
+    url("../Font/woff/moraba/Morabba-Light.woff") format("woff"),
+    url("../Font/woff2/moraba/Morabba-Light.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Morabba Medium";
+
+  src:
+    url("../Font/woff/moraba/Morabba-Medium.woff") format("woff"),
+    url("../Font/woff2/moraba/Morabba-Medium.woff2") format("woff2");
+  font-display: swap;
+}
+@font-face {
+  font-family: "Morabba Bold";
+
+  src:
+    url("../Font/woff/moraba/Morabba-Bold.woff") format("woff"),
+    url("../Font/woff2/moraba/Morabba-Bold.woff2") format("woff2");
+  font-display: swap;
+}
+@import "tailwindcss";
+
+@custom-variant dark (&:where(.dark, .dark *));
+
+@utility container {
+  margin-left: auto;
+  margin-right: auto;
+  padding: 1rem;
+  @media (width >= 1024px) {
+    padding: 0.625rem;
+  }
+}
+
+@utility bg-main-pattern {
+  background-image: url("/img/headerBgDesktop.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@utility bg-main-pattern-mobile {
+  background-image: url("/img/headerBgMobile.webp");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+@utility bg-body {
+  background-image: url("/img/body-bg.png");
+  background-repeat: no-repeat;
+  background-size: cover;
+}
+
+@theme {
+  --color-brown-900: #634832;
+  --color-brown-600: #967259;
+  --color-brown-300: #dbc1ac;
+  --color-brown-100: #ece0d1;
+
+  --color-dark: #27272a;
+
+  --shadow-normal: 0px 1px 10px rgb(0, 0, 0, 0.05);
+  --text-shadow-txt: 0px 0px 10px 0px rgb(0, 0, 0, 0.4);
+  --color-dark: #27272a;
+
+  --font-Dana: "Dana";
+  --font-DanaDemiBold: "Dana DemiBold";
+  --font-DanaMedium: "Dana Medium";
+  --font-MorabbaLight: "Morabba Light";
+  --font-MorabbaMedium: "Morabba Medium";
+  --font-MorabbaBold: "Morabba Bold";
+
+  --tracking-super: -0.065em;
+
+  --breakpoint-2xl: initial;
+  --breakpoint-xs: 440px;
+}
+
+@layer components {
+  .menu_item {
+    @apply relative pr-2.5 *:text-orange-300;
+  }
+  .menu_item::before {
+    @apply content-[''] w-1 h-1 bg-orange-300 absolute block m-auto right-0 top-0 bottom-0 rounded-full;
+  }
+
+  #test {
+    @apply flex flex-col pr-7 space-y-3 pt-3 *:transition-all *:text-sm *:leading-6 *:text-zinc-600 *:dark:text-white;
+  }
+  .click {
+    @apply opacity-0 invisible *:hidden absolute;
+  }
+
+  #overLay {
+    @apply fixed inset-0 w-full h-full bg-black/40 z-10 md:hidden transition-all;
+  }
+
+  .overlay--open {
+    @apply opacity-100 visible;
+  }
+
+  .overlay--close {
+    @apply opacity-0 invisible;
+  }
+}
